@@ -120,6 +120,33 @@ function updateDOM() {
 
 // ================================================================
 
+// Add text input to column
+function addToColumn(column) {
+  const itemText = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
+  //reset textbox
+  addItems[column].textContent = "";
+  //Update DOM
+  updateDOM();
+}
+
+// Show input box when "add item" is clicked:
+
+function showInputBox(column) {
+  addBtns[column].style.visibility = "hidden";
+  saveItemBtns[column].style.display = "flex";
+  addItemContainers[column].style.display = "flex";
+}
+
+// Hide input box when save is clicked and call addToColumn() to update list:
+function hideInputBox(column) {
+  addBtns[column].style.visibility = "visible";
+  saveItemBtns[column].style.display = "none";
+  addItemContainers[column].style.display = "none";
+  addToColumn(column);
+}
+
 // Allows Arrays to reflect drag & drop items on HTML
 
 function rebuildArrays() {
