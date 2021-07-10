@@ -50,14 +50,15 @@ function updateSavedColumns() {
   });
 }
 
+// Filter arrays to remove empty items
+function filterArray(array) {
+  const filteredArray = array.filter((item) => item !== null);
+  return filteredArray;
+}
+
 // Create DOM Elements for each list item
 
 function createItemEl(columnEl, column, item, index) {
-  // console.log("columnEl:", columnEl);
-  // console.log("column:", column);
-  // console.log("item:", item);
-  // console.log("index:", index);
-
   // List Item
 
   const listEl = document.createElement("li");
@@ -65,6 +66,10 @@ function createItemEl(columnEl, column, item, index) {
   listEl.textContent = item;
   listEl.draggable = true;
   listEl.setAttribute("ondragstart", "drag(event)");
+  listEl.contentEditable = "true";
+  // to determine which item in column list to be targeted
+  listEl.id = index;
+  listEl.setAttribute("onfocusout", `updateItem(${index},${column})`);
 
   // Append to Dom element
   columnEl.appendChild(listEl);
@@ -88,29 +93,37 @@ function updateDOM() {
     createItemEl(backlogList, 0, backlogItem, index);
   });
 
+  backlogListArray = filterArray(backlogListArray);
+
   // Progress Column
 
   progressList.textContent = "";
 
   progressListArray.forEach((progressItem, index) => {
-    createItemEl(progressList, 0, progressItem, index);
+    createItemEl(progressList, 1, progressItem, index);
   });
+
+  progressListArray = filterArray(progressListArray);
 
   // Complete Column
 
   completeList.textContent = "";
 
   completeListArray.forEach((completeItem, index) => {
-    createItemEl(completeList, 0, completeItem, index);
+    createItemEl(completeList, 2, completeItem, index);
   });
+
+  completeListArray = filterArray(completeListArray);
 
   // On Hold Column
 
   onHoldList.textContent = "";
 
   onHoldListArray.forEach((onHoldItem, index) => {
-    createItemEl(onHoldList, 0, onHoldItem, index);
+    createItemEl(onHoldList, 3, onHoldItem, index);
   });
+
+  onHoldListArray = filterArray(onHoldListArray);
 
   // Run getSavedColumns() only once, also Update Local Storage with updateSavedColumns() everytime
   updatedOnLoad = true;
@@ -119,6 +132,18 @@ function updateDOM() {
 }
 
 // ================================================================
+
+// Update Item  - Delete if blank , or update if different from stored value
+
+function updateItem(id, column) {
+  const selectedArray = listArrays[column];
+  console.log(selectedArray);
+  const selectedColumnEl = listColumns[column].children;
+  if (!selectedColumnEl[id].textContent) {
+    delete selectedArray[id];
+  }
+  updateDOM();
+}
 
 // Add text input to column
 function addToColumn(column) {
