@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.container,
+html,
+body {
+  height: 100vh;
+}
+.content {
+  color: #fff;
+  font-weight: 300;
+  padding: 0 2rem;
+}
+
+.container,
+.content,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content,
+.footer {
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.container,
+.content {
+  flex-direction: column;
+}
+
+.footer {
+  flex-wrap: wrap;
+  max-width: 600px;
+  animation: change 0.5s forwards;
+  -webkit-animation: change 0.5s forwards;
+}
+
+.title {
+  margin: 0;
+}
+span {
+  color: #4265d6;
+  font-weight: inherit;
+}
+
+.footer a {
+  width: 40%;
+  transition: all 3s;
+  text-decoration: none;
+  padding: 12px 18px;
+  outline: none;
+  margin: 20px auto 0 auto;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  border: 2px solid;
+  border-radius: 50px;
+  -webkit-transition: all 3s;
+  -webkit-border-radius: 50px;
+  -o-transition: all 3s;
+  -o-border-radius: 50px;
+  -ms-transition: all 3s;
+  -ms-border-radius: 50px;
+  -moz-transition: all 3s;
+  -moz-border-radius: 50px;
+}
+
+footer a:hover {
+  background-color: #fff;
+  color: #222;
+  border-color: #fff;
+}
+
+.text,
+.title {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.title {
+  font-size: 6.4rem;
+  font-weight: bold;
+  opacity: 0;
+  animation: change 0.5s forwards;
+  -webkit-animation: change 0.5s forwards;
+  color: #fff;
+}
+.text {
+  max-width: 50rem;
+  font-weight: 400;
+  padding: 2rem 0;
+  font-size: 1.3rem;
+  color: #fff;
+  animation: change 0.5s 0.3s forwards;
+  -webkit-animation: change 0.5s 0.3s forwards;
+}
+
+/* Waves */
+
+.wave {
+  opacity: 0.6;
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  width: 6000px;
+  height: 6000px;
+  background: #000;
+  margin-left: -3000px;
+  transform-origin: 50% 48%;
+  animation: wave 12s infinite;
+  border-radius: 46%;
+  -webkit-border-radius: 46%;
+  -moz-border-radius: 46%;
+  -ms-border-radius: 46%;
+  -o-border-radius: 46%;
+  -webkit-animation: wave 12s infinite linear;
+  pointer-events: none;
+}
+
+.wave2 {
+  opacity: 0.3s;
+  animation: wave 28s infinite linear;
+  -webkit-animation: wave 28s infinite linear;
+}
+.wave3 {
+  opacity: 1s;
+  animation: wave 20s infinite linear;
+  -webkit-animation: wave 20s infinite linear;
+}
+
+.container {
+  position: relative;
+  background-color: #4265d6;
+  z-index: 99;
+}
+
+@keyframes change {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+    -webkit-transform: translateY(2rem);
+    -moz-transform: translateY(2rem);
+    -ms-transform: translateY(2rem);
+    -o-transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes wave {
+  from {
+    transfom: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}

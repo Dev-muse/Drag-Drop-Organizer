@@ -14,7 +14,7 @@ html {
 
 body {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
-    url("./minimal-background.jpg");
+    url("../images/minimal-background.jpg");
   background-size: cover;
   background-position: 50% 60%;
   background-attachment: fixed;
